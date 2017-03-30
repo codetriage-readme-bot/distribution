@@ -1,53 +1,99 @@
 source 'https://rubygems.org'
 
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
-end
-
+# git_source(:github) do |repo_name|
+#   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+#   "https://github.com/#{repo_name}.git"
+# end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
+
+# Bootstrap for Sass
+gem 'bootstrap-sass', '~> 3.3.6'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 3.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+# HTML Abstraction Markup Language
+gem 'haml'
 
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
-end
+# Authentication solution
+gem 'devise'
+gem 'cancan'
 
+# ActiveAdmin for an integrated User/Admin Architecture
+gem 'activeadmin', github: 'activeadmin', branch: 'master'
+
+# For pagination
+gem 'kaminari'
+
+gem 'font-awesome-rails'
+
+# Development
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
-  gem 'listen', '~> 3.0.5'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  gem 'web-console'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'hirb' # Mini view framework for console applications
+  gem 'letter_opener' # Preview email in the browser instead of sending it
+  gem 'bullet' # Help to kill N+1 queries and unused eager loading
+  # gem 'guard' # Handle events on file system modifications
+  # gem 'guard-livereload', '~> 2.4', require: false # Automatically reload browser
+  gem 'railroady', require: false # rake diagram:all - Generate (ActiveRecord, Mongoid, Datamapper) and controller UML diagrams doc
+  gem 'spring' # Rails application preloader
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'awesome_print', '~> 1.6', '>= 1.6.1' # Pretty prints Ruby objects
+  gem 'pry-rails' # Best Console handler
+  gem 'pry-doc' # show doc on offline in console Ex: type '? Array#each'
+  gem 'rails_db' # Rails Database Viewer and SQL Query Runner. run 'railsdb'
+  
+  gem 'brakeman', require: false # <<brakeman>>
+  gem 'annotate' # Add a comment summarizing the current schema
+  # Performance
+  gem 'rack-mini-profiler' # Inline app profiler. See ?pp=help for options.
+  # gem 'flamegraph'         # Flamegraph visualiztion: ?pp=flamegraph
+
+  # Refactoring and code quality
+  gem 'reek', require: false # Check ruby code smell <<reek app/>>. USE 'rubycritic'
+  gem 'rails_best_practices' # Follow rails best practices rules <<rails_best_practices -f html app/presenters/>>
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# Unit testing related gems
+group :test do
+  gem 'selenium-webdriver', '2.35.1'
+  gem 'capybara', '2.1.0'
+  gem "capybara-webkit"
+  gem 'rspec-rails', '2.13.1'
+  gem "launchy"
+  gem "shoulda-matchers"
+  gem 'database_cleaner'
+end
+
+group :test, :development do
+  gem 'byebug', platform: :mri
+  gem 'dotenv-rails'
+  gem 'faker'
+  gem 'foreman'
+end
+
+group :doc do
+  gem 'sdoc', require: false # bundle exec rake doc:rails generates the API under doc/api.
+end
