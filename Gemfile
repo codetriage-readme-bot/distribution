@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 #   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
 #   "https://github.com/#{repo_name}.git"
 # end
+ruby '2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
@@ -33,7 +34,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 
 # HTML Abstraction Markup Language
-gem 'haml'
+gem 'haml-rails'
 
 # Authentication solution
 gem 'devise'
@@ -55,8 +56,6 @@ group :development do
   gem 'hirb' # Mini view framework for console applications
   gem 'letter_opener' # Preview email in the browser instead of sending it
   gem 'bullet' # Help to kill N+1 queries and unused eager loading
-  # gem 'guard' # Handle events on file system modifications
-  # gem 'guard-livereload', '~> 2.4', require: false # Automatically reload browser
   gem 'railroady', require: false # rake diagram:all - Generate (ActiveRecord, Mongoid, Datamapper) and controller UML diagrams doc
   gem 'spring' # Rails application preloader
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -64,7 +63,7 @@ group :development do
   gem 'pry-rails' # Best Console handler
   gem 'pry-doc' # show doc on offline in console Ex: type '? Array#each'
   gem 'rails_db' # Rails Database Viewer and SQL Query Runner. run 'railsdb'
-  
+
   gem 'brakeman', require: false # <<brakeman>>
   gem 'annotate' # Add a comment summarizing the current schema
   # Performance
@@ -80,10 +79,10 @@ end
 group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'
-  gem "capybara-webkit"
+  gem 'capybara-webkit'
   gem 'rspec-rails', '2.13.1'
-  gem "launchy"
-  gem "shoulda-matchers"
+  gem 'launchy'
+  gem 'shoulda-matchers'
   gem 'database_cleaner'
 end
 
