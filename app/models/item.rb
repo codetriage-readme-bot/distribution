@@ -14,5 +14,7 @@
 class Item < ApplicationRecord
   enum status: %i(initiate processing completed)
 
+  belongs_to :address
+
   validates_presence_of :name, :weight
 end
