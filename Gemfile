@@ -49,6 +49,8 @@ gem 'draper', '3.0.0.pre1'
 
 # Development
 group :development do
+  gem 'pry-rails' # Best Console handler
+
   gem 'awesome_print', '~> 1.6', '>= 1.6.1' # Pretty prints Ruby objects
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -56,7 +58,6 @@ group :development do
   gem 'hirb' # Mini view framework for console applications
   gem 'letter_opener' # Preview email in the browser instead of sending it
   gem 'pry-doc' # show doc on offline in console Ex: type '? Array#each'
-  gem 'pry-rails' # Best Console handler
   gem 'railroady', require: false # rake diagram:all
   gem 'rails_db' # Rails Database Viewer and SQL Query Runner. run 'railsdb'
   gem 'spring' # Rails application preloader
