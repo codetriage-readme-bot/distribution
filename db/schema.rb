@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_170_331_174_400) do
+ActiveRecord::Schema.define(version: 20_170_331_184_533) do
+  create_table 'addresses', force: :cascade do |t|
+    t.string   'city'
+    t.string   'street_name'
+    t.integer  'building_number'
+    t.integer  'zip'
+    t.string   'state'
+    t.string   'country'
+    t.datetime 'created_at',      null: false
+    t.datetime 'updated_at',      null: false
+  end
+
   create_table 'drones', force: :cascade do |t|
     t.string   'name'
     t.datetime 'created_at', null: false
