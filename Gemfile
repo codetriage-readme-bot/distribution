@@ -77,15 +77,15 @@ end
 # Unit testing related gems
 group :test do
   gem 'test-unit'
-  gem 'selenium-webdriver', '2.35.1'
-  gem 'capybara', '2.1.0'
-  gem 'capybara-webkit'
   gem 'rspec-rails'
+  gem 'selenium-webdriver', '2.35.1'
+  gem 'capybara'
+  gem 'capybara-webkit'
   gem 'launchy'
-  gem 'factory_girl'
-  gem 'shoulda'
-  gem 'shoulda-matchers'
   gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'shoulda', '=3.5.0'
+  gem 'shoulda-matchers'
 end
 
 group :test, :development do
