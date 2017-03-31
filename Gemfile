@@ -38,15 +38,14 @@ gem 'haml-rails'
 
 # Authentication solution
 gem 'devise'
-gem 'cancan'
-
-# ActiveAdmin for an integrated User/Admin Architecture
-gem 'activeadmin', github: 'activeadmin', branch: 'master'
 
 # For pagination
 gem 'kaminari'
 
 gem 'font-awesome-rails'
+
+# Decorators/View-Models
+gem 'draper', '3.0.0.pre1'
 
 # Development
 group :development do
@@ -56,7 +55,7 @@ group :development do
   gem 'hirb' # Mini view framework for console applications
   gem 'letter_opener' # Preview email in the browser instead of sending it
   gem 'bullet' # Help to kill N+1 queries and unused eager loading
-  gem 'railroady', require: false # rake diagram:all - Generate (ActiveRecord, Mongoid, Datamapper) and controller UML diagrams doc
+  gem 'railroady', require: false # rake diagram:all
   gem 'spring' # Rails application preloader
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'awesome_print', '~> 1.6', '>= 1.6.1' # Pretty prints Ruby objects
@@ -71,17 +70,20 @@ group :development do
   # gem 'flamegraph'         # Flamegraph visualiztion: ?pp=flamegraph
 
   # Refactoring and code quality
-  gem 'reek', require: false # Check ruby code smell <<reek app/>>. USE 'rubycritic'
-  gem 'rails_best_practices' # Follow rails best practices rules <<rails_best_practices -f html app/presenters/>>
+  gem 'reek', require: false # code smell <<reek app/>>. USE 'rubycritic'
+  gem 'rails_best_practices' # <<rails_best_practices -f html app/presenters/>>
 end
 
 # Unit testing related gems
 group :test do
+  gem 'test-unit'
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'
   gem 'capybara-webkit'
-  gem 'rspec-rails', '2.13.1'
+  gem 'rspec-rails'
   gem 'launchy'
+  gem 'factory_girl'
+  gem 'shoulda'
   gem 'shoulda-matchers'
   gem 'database_cleaner'
 end
@@ -91,8 +93,4 @@ group :test, :development do
   gem 'dotenv-rails'
   gem 'faker'
   gem 'foreman'
-end
-
-group :doc do
-  gem 'sdoc', require: false # bundle exec rake doc:rails generates the API under doc/api.
 end

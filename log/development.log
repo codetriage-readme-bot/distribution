@@ -56,3 +56,11 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 21ms (Views: 16.0ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-03-31 20:20:00 +0530
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /home/selvamani/.rvm/gems/ruby-2.3.0@rails5.0.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/selvamani/.rvm/gems/ruby-2.3.0@rails5.0.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb (14.9ms)
+Completed 200 OK in 80ms (Views: 58.0ms | ActiveRecord: 0.0ms)
+
+
