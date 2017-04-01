@@ -12,8 +12,8 @@
 
 FactoryGirl.define do
   factory :activity do
-    drone nil
-    item nil
+    drone
+    item
     progress 1
   end
 end

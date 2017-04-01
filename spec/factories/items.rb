@@ -17,6 +17,7 @@ FactoryGirl.define do
     name     Faker::Name.name
     weight   Faker::Number.digit
     priority Faker::Number.digit
-    status   Faker::Number.digit
+    status   0
+    address
   end
 end
