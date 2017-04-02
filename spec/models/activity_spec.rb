@@ -43,4 +43,13 @@ RSpec.describe Activity, type: :model do
       expect(activity.completed?).to be_truthy
     end
   end
+
+  describe '.create_activity' do
+    it 'should return last Activity of a drone' do
+      item  = FactoryGirl.create(:item)
+      drone = FactoryGirl.create(:drone)
+      Activity.create_activity(item.id, drone.id)
+      expect(Activity.count).to eq(1)
+    end
+  end
 end

@@ -23,4 +23,12 @@ RSpec.describe Drone, type: :model do
       expect(drone.name).to eq(name.downcase)
     end
   end
+
+  describe '#delivered' do
+    it 'return total number of delivered items' do
+      drone = FactoryGirl.create(:drone)
+      FactoryGirl.create(:activity, drone_id: drone.id, progress: 'arrived')
+      expect(drone.delivered).to eq(1)
+    end
+  end
 end

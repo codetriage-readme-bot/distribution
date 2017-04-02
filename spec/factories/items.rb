@@ -20,6 +20,6 @@ FactoryGirl.define do
     priority Faker::Number.digit
     status   0
     address
-    delivery_address
+    association :delivery_address, factory: :address
   end
 end
