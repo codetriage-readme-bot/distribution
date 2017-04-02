@@ -20,6 +20,11 @@ class DroneDecorator < Draper::Decorator
     end
   end
 
+  def progress_length
+    activity = command_center.last_completed_activity
+    (activity.progress_before_type_cast + 1) * 2 * 10
+  end
+
   private
 
   def command_center

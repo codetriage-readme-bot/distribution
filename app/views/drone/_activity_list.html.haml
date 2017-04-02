@@ -1,8 +1,7 @@
 - drone.list_of_instructions.each do |progress|
   %li{class: progress[:status] ? 'active' : 'disabled'}
-    -if progress[:status]
-      = link_to progress[:name], drone_update_activity_path(id: drone.id, message: progress[:name].to_s),method: :post, remote: true
-    -else
-      %input{disabled: 'disable', type: "checkbox", value: "#{progress[:name].to_s}"}/
-    %a{:href => "#"}= progress[:name].capitalize
+    = box_list(progress[:status], progress[:name]) do
+      = status_message(progress[:name])
+      %i progress[:name]
+      = display_address(progress[:name], item)      
   - break if progress[:status]

@@ -12,6 +12,6 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
-
 class Address < ApplicationRecord
+  scope :command_center, -> { find(1) }
 end

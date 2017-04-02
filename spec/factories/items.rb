@@ -2,14 +2,15 @@
 #
 # Table name: items
 #
-#  id         :integer          not null, primary key
-#  name       :string
-#  weight     :integer
-#  priority   :integer
-#  status     :integer          default("initiate")
-#  address_id :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                  :integer          not null, primary key
+#  name                :string
+#  weight              :integer
+#  priority            :integer
+#  status              :integer          default("initiate")
+#  address_id          :integer
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  delivery_address_id :integer
 #
 
 FactoryGirl.define do
@@ -19,5 +20,6 @@ FactoryGirl.define do
     priority Faker::Number.digit
     status   0
     address
+    delivery_address
   end
 end

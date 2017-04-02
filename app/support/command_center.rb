@@ -18,10 +18,6 @@ class CommandCenter
     instructor_intiate.next_process?
   end
 
-  def address
-    @address ||= Address.find(1)
-  end
-
   def last_completed_activity
     last_activity || drone_last_activity
   end

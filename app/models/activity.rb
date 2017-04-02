@@ -5,10 +5,11 @@
 #  id         :integer          not null, primary key
 #  drone_id   :integer
 #  item_id    :integer
-#  progress   :integer
+#  progress   :integer          default("departed")
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+
 class Activity < ApplicationRecord
   ACTIVITY_ORDER = Instructor::INSTRUCTION_ORDER
 
@@ -24,5 +25,4 @@ class Activity < ApplicationRecord
   def self.create_activity(item_id, drone_id, progress = 0)
     create(item_id: item_id, drone_id: drone_id, progress: progress)
   end
-
 end

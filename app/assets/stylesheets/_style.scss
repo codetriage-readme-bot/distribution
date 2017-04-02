@@ -56,10 +56,37 @@
     margin: auto;
     padding: 21px;
     font-size: 20px;
+    i {
+      width: 34px;
+      height: 34px;
+      display: inline;
+      float: left;
+      margin-right: 26px;
+      background-image: url(/assets/checkmark.png);
+      background-position: 0 0;
+      text-indent: -99999px;
+      z-index: 33;
+      background-size: 33px;
+    }
+    button {
+      float: right;
+      line-height: 18px;
+      font-size: 14px;
+      padding: 5px 13px;
+    }
+    .tooltip.fade {
+      right: 0;
+    }
   }
   li.active{
     width: 101%;
     box-shadow: 1px 1px 0px 9px rgb(202, 202, 202);
     right: .5%;
+    a i {
+      margin-left: 0.5%;
+    }
+    a:hover i {
+      background-image: url(/assets/checkmark_marker.png);
+    }
   }
 }

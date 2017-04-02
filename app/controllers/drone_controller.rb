@@ -12,20 +12,25 @@ class DroneController < ApplicationController
       flash[:success] = 'Welcome drone! Register your name.'
       redirect_to drones_path
     end
+    @activity = command_center.last_completed_activity
+  end
+
+  def item_activity
+    redirect_to(drone_path(@drone)) && return unless command_center.next_instruction?
+    @activity = command_center.last_completed_activity
+    @activity = command_center.next_instruction if @activity.present? && @activity.completed?
   end
 
   def item_activity
     redirect_to drone_path(@drone) and return unless command_center.next_instruction?
     @activity = command_center.last_completed_activity
     @activity = command_center.next_instruction if @activity.present? && @activity.completed?
-    @item = @activity.item
   end
 
   def update_activity
     if params[:message].present? && command_center.next_activity_name == params[:message]
       @activity = command_center.next_instruction
       flash[:success] = 'Done well!!!' if @activity.completed?
-      @item = @activity.item
     else
       @error = "Your next process should be #{command_center.next_activity_name}"
     end

@@ -8,3 +8,4 @@ $(document).ready ->
       url: '/drone/update_activity'
       data: data
       dataType: 'js'
+  CommonFunction.activateToolTip()

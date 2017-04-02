@@ -1,0 +1,10 @@
+- if activity.present? && !activity.completed?
+  %p Some of your tasks were not completed. Are you ready to complete?
+  %p
+    = link_to('YES', drone_item_activity_path(drone), class: 'btn btn-primary btn-lg')
+- elsif drone.job_available?
+  %p Some items are waiting to pick up. Are you Ready?
+  %p
+    = link_to('YES', drone_item_activity_path(drone), class: 'btn btn-primary btn-lg')
+- else 
+  %p Congratulations :-) . All the goods are delivered. Wait for some time. Command sender will update you when next item intiated.

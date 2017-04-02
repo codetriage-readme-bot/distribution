@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_170_331_192_304) do
+ActiveRecord::Schema.define(version: 20_170_402_112_320) do
   create_table 'activities', force: :cascade do |t|
     t.integer  'drone_id'
     t.integer  'item_id'
@@ -44,7 +44,8 @@ ActiveRecord::Schema.define(version: 20_170_331_192_304) do
     t.integer  'priority'
     t.integer  'status', default: 0
     t.integer  'address_id'
-    t.datetime 'created_at',             null: false
-    t.datetime 'updated_at',             null: false
+    t.datetime 'created_at',                      null: false
+    t.datetime 'updated_at',                      null: false
+    t.integer  'delivery_address_id'
   end
 end

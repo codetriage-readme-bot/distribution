@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  drone_id   :integer
 #  item_id    :integer
-#  progress   :integer
+#  progress   :integer          default("departed")
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
