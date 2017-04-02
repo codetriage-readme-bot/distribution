@@ -12,8 +12,11 @@ class DroneDecorator < Draper::Decorator
   end
 
   def list_of_instructions
+    flag = false
     Instructor::INSTRUCTION_ORDER.map do |status|
-      { status: matched_activity?(status), name: status.to_s.capitalize }
+      maped_hash = { status: flag, name: status.to_s }
+      flag = matched_activity?(status)
+      maped_hash
     end
   end
 

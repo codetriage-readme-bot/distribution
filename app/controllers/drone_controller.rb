@@ -1,6 +1,6 @@
 # Drone Process update
 class DroneController < ApplicationController
-  before_action :find_drone, only: [:show, :update_activity]
+  before_action :find_drone, execpt: [:index]
 
   def index
     @drone = Drone.find_or_create_by(name: params[:name].downcase) if params[:name].present?
@@ -14,11 +14,20 @@ class DroneController < ApplicationController
     end
   end
 
-  def update_activity
-    command_center = CommandCenter.new(@drone)
-    redirect_to drone_path(@drone) and return unless command_center.next_instruction?
+  def item_activity
+    redirect_to drone_path(@drone) && return unless command_center.next_instruction?
     @activity = command_center.last_completed_activity
+    @activity = command_center.next_instruction if @activity.present? && @activity.completed?
     @item = @activity.item
+  end
+
+  def update_activity
+    if params[:message].present? && command_center.next_activity_name == params[:message]
+      @activity = command_center.next_instruction
+      @item = @activity.item
+    else
+      @error = "Your next process should be #{command_center.next_activity_name}"
+    end
   end
 
   private
@@ -26,5 +35,9 @@ class DroneController < ApplicationController
   def find_drone
     @drone = Drone.where(id: params[:id]).first
     @drone = DroneDecorator.decorate(@drone) if @drone.present?
+  end
+
+  def command_center
+    @p_center ||= CommandCenter.new(@drone)
   end
 end

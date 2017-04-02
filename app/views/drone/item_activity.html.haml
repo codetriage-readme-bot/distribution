@@ -1,0 +1,9 @@
+.panel.panel-default.item-info{data: {id: @drone.id} }
+  .panel-body
+    %h2
+      Name : 
+      = @item.name
+.progress
+  .progress-bar.progress-bar-info{:style => "width: 80%"}
+%ul.nav.nav-pills.nav-stacked.col-md-6.col-md-offset-3
+  = render partial: 'drone/activity_list', locals: { drone: @drone }

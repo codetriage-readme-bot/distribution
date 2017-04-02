@@ -23,6 +23,14 @@ class Instructor
     activity.completed? ? item.present? : true
   end
 
+  def current_index_state
+    INSTRUCTION_ORDER.index(activity.progress.to_sym)
+  end
+
+  def next_index_state
+    INSTRUCTION_ORDER[current_index_state + 1]
+  end
+
   private
 
   def pick_next_activity
@@ -45,14 +53,6 @@ class Instructor
   def next_activity
     activity_item.completed! if activity.delivered?
     Activity.create_activity(activity_item.id, @drone_id, next_index_state)
-  end
-
-  def current_index_state
-    INSTRUCTION_ORDER.index(activity.progress.to_sym)
-  end
-
-  def next_index_state
-    INSTRUCTION_ORDER[current_index_state + 1]
   end
 
   def activity_item

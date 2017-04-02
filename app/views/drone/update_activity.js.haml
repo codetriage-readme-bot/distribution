@@ -1,0 +1,4 @@
+- if @error.present?
+  alert("#{@error}")
+- else 
+  $('.nav.nav-pills.nav-stacked').html("#{j render partial: 'drone/activity_list', locals: { drone: @drone }})

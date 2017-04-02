@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   root 'drone#index'
   get '/drones', to: 'drone#index', as: 'drones'
   get '/drone/:id', to: 'drone#show', as: 'drone'
-  get '/drone/:id/update_activity', to: 'drone#update_activity',as: :drone_update_activity
+  get '/drone/:id/item_activity', to: 'drone#item_activity', as: :drone_item_activity
+  post '/drone/update_activity', to: 'drone#update_activity', as: :drone_update_activity
 end

@@ -24,4 +24,5 @@ class Activity < ApplicationRecord
   def self.create_activity(item_id, drone_id, progress = 0)
     create(item_id: item_id, drone_id: drone_id, progress: progress)
   end
+
 end

@@ -79,27 +79,42 @@ RSpec.describe CommandCenter do
       completed_item
       expect(command_center.next_instruction).to be_nil
     end
+
+    it 'should pick next item' do
+      item
+      FactoryGirl.create(:item, status: 1)
+      expect(command_center.next_instruction.item.id).to eq(item.id)
+    end
+  end
+  
+  describe '#last_completed_activity' do
+    let(:drone) { FactoryGirl.create(:drone) }
+    let(:processing_item) { FactoryGirl.create(:item, status: 'processing') }
+    let(:command_center) { CommandCenter.new(drone) }
+
+    it 'should nil for new drone' do
+      expect(command_center.last_completed_activity).to be_falsey
+    end
+
+    it 'should match with last completed' do
+      create_activity_order(processing_item, drone, 3)
+      expect(command_center.last_completed_activity).to be_truthy
+    end
   end
 
-  describe '#dron_processing?' do
-    let(:item) { FactoryGirl.create(:item) }
+  describe '#next_activity_name' do
     let(:processing_item) { FactoryGirl.create(:item, status: 'processing') }
-    let(:completed_item) { FactoryGirl.create(:item, status: 'completed') }
     let(:drone) { FactoryGirl.create(:drone) }
     let(:command_center) { CommandCenter.new(drone) }
 
-    it 'should return true for existing items' do
+    it 'should return true' do
       create_activity_order(processing_item, drone, 3)
-      expect(command_center.dron_processing?).to be_truthy
-    end
-
-    it 'should return false fo existing completed' do
-      create_activity_order(processing_item, drone, 5)
-      expect(command_center.dron_processing?).to be_falsey
+      expect(command_center.next_activity_name).to eq('delivered')
     end
 
     it 'should return false' do
-      expect(command_center.dron_processing?).to be_falsey
+      create_activity_order(processing_item, drone, 5)
+      expect(command_center.next_activity_name).to eq('')
     end
   end
 end

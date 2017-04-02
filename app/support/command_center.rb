@@ -18,11 +18,6 @@ class CommandCenter
     instructor_intiate.next_process?
   end
 
-  def dron_processing?
-    last_activity = drone_last_activity
-    last_activity.present? && !last_activity.completed?
-  end
-
   def address
     @address ||= Address.find(1)
   end
@@ -31,10 +26,19 @@ class CommandCenter
     last_activity || drone_last_activity
   end
 
+  def next_activity_name
+    instructor_intiate(drone_last_activity).next_index_state.to_s
+  end
+
   private
 
-  def instructor_intiate
-    Instructor.new(id, any_activity)
+  def dron_processing?
+    last_activity = drone_last_activity
+    last_activity.present? && !last_activity.completed?
+  end
+
+  def instructor_intiate(activity = any_activity)
+    Instructor.new(id, activity)
   end
 
   def any_activity
