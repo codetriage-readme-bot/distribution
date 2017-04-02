@@ -16,5 +16,9 @@ class Item < ApplicationRecord
 
   belongs_to :address
 
-  validates_presence_of :name, :weight
+  validates_presence_of :name, :weight, :address
+
+  scope :unfinished, -> { where(status: 'initiate') }
+  scope :high_priority, -> { order('priority desc') }
+  scope :undelivered, -> { high_priority.unfinished }
 end

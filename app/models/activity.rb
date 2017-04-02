@@ -10,10 +10,19 @@
 #  updated_at :datetime         not null
 #
 class Activity < ApplicationRecord
-  ACTIVITY_ORDER = [:departed, :picked, :reached, :delivered, :arrived].freeze
+  ACTIVITY_ORDER = Instructor::INSTRUCTION_ORDER
 
-  enum status: ACTIVITY_ORDER
+  enum progress: ACTIVITY_ORDER
 
   belongs_to :drone
   belongs_to :item
+
+  scope :dron_last_activity, ->(drone_id) { where(drone_id: drone_id).order(id: :desc) }
+
+  alias completed? arrived?
+
+  def self.create_activity(item_id, drone_id, progress = 0)
+    create(item_id: item_id, drone_id: drone_id, progress: progress)
+  end
+
 end

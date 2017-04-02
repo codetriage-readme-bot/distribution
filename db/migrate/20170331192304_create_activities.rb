@@ -4,7 +4,7 @@ class CreateActivities < ActiveRecord::Migration[5.0]
     create_table :activities do |t|
       t.references :drone, foreign_key: true
       t.references :item, foreign_key: true
-      t.integer :progress
+      t.integer :progress, default: 0
 
       t.timestamps
     end

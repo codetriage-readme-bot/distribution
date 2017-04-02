@@ -40,4 +40,25 @@ RSpec.describe Item, type: :model do
     it { expect(item.status).to     eq('initiate') }
     it { expect(item.address_id).to eq(@first_address.id) }
   end
+
+  describe '.unfinished' do
+    it 'should return item' do
+      item = FactoryGirl.create(:item)
+      expect(Item.unfinished.first).to eq(item)
+    end
+
+    it 'should not return item' do
+      FactoryGirl.create(:item, status: 1)
+      expect(Item.unfinished.count).to eq(0)
+    end
+  end
+
+  describe '.high_priority' do
+    it 'should return priority item' do
+      FactoryGirl.create(:item, priority: 1)
+      FactoryGirl.create(:item, priority: 2)
+      FactoryGirl.create(:item, priority: 3)
+      expect(Item.high_priority.first.priority).to eq(3)
+    end
+  end
 end

@@ -80,7 +80,6 @@ group :test do
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'database_cleaner'
-  gem 'factory_girl_rails'
   gem 'launchy'
   gem 'rspec-rails'
   gem 'selenium-webdriver', '2.35.1'
@@ -92,6 +91,7 @@ end
 group :test, :development do
   gem 'byebug', platform: :mri
   gem 'dotenv-rails'
+  gem 'factory_girl_rails'
   gem 'faker'
   gem 'foreman'
 end
