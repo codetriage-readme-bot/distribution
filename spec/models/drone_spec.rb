@@ -20,7 +20,7 @@ RSpec.describe Drone, type: :model do
     let(:drone) { FactoryGirl.create(:drone, name: name) }
 
     it 'should respond assigned name' do
-      expect(drone.name).to eq(name)
+      expect(drone.name).to eq(name.downcase)
     end
   end
 end

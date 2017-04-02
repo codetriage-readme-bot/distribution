@@ -1,0 +1,17 @@
+.col-xs-12
+  .modal
+    .modal-dialog
+      .modal-content
+        .modal-header.text-center
+          %h3.modal-title HI DRONE!
+        .modal-body
+          = form_tag(drones_path, method: "get", class: 'form-horizontal') do
+            %fieldset
+              .form-group
+                %label.col-lg-3.control-label{:for => "inputEmail"} YOUR NAME
+                .col-lg-9
+                  = text_field_tag(:name, nil, class: 'form-control', id: 'inputEmail')
+              .form-group
+                .col-lg-10.col-lg-offset-2
+                  = submit_tag("GO", class: 'btn btn-primary pull-right')
+          

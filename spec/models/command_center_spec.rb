@@ -24,7 +24,7 @@ RSpec.describe CommandCenter do
     let(:drone) { FactoryGirl.create(:drone) }
     let(:command_center) { CommandCenter.new(drone) }
 
-    it 'drone take a new item and intiate' do
+    it 'drone take a new item and initiate' do
       item
       new_activity = command_center.next_instruction
       expect(new_activity.drone_id).to    eq drone.id

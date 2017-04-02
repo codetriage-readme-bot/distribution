@@ -9,4 +9,16 @@
 #
 class Drone < ApplicationRecord
   validates_presence_of :name
+  before_save :name_downcase
+
+  def delivered
+    Activity.where(drone_id: id, progress: 'arrived').count
+  end
+  
+  private
+
+  def name_downcase
+    self.name = name.downcase if name_changed?
+  end
+
 end

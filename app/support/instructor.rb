@@ -9,11 +9,18 @@ class Instructor
   end
 
   def next_process
+    return nil unless next_process?
     if activity.present?
       pick_next_activity
     else
       pick_new_item
     end
+  end
+
+  def next_process?
+    item = Item.undelivered.first
+    return item.present? if activity.nil?
+    activity.completed? ? item.present? : true
   end
 
   private
@@ -27,25 +34,28 @@ class Instructor
   end
 
   def pick_new_item
-    item = Item.high_priority.unfinished.first
+    item = Item.undelivered.first
     if item.present?
       item.processing!
-      @activity = Activity.create(item: item, drone_id: @drone_id)
+      @activity = Activity.create_activity(item.id, @drone_id)
     end
     @activity
   end
 
   def next_activity
-    item.completed! if activity.delivered?
-    next_index = INSTRUCTION_ORDER[current_index_state + 1]
-    Activity.create(item: item, drone_id: @drone_id, progress: next_index)
+    activity_item.completed! if activity.delivered?
+    Activity.create_activity(activity_item.id, @drone_id, next_index_state)
   end
 
   def current_index_state
     INSTRUCTION_ORDER.index(activity.progress.to_sym)
   end
 
-  def item
-    activity.present? ? activity.item : nil
+  def next_index_state
+    INSTRUCTION_ORDER[current_index_state + 1]
+  end
+
+  def activity_item
+    activity.present? ? activity.item : Item.new
   end
 end

@@ -20,4 +20,8 @@ class Activity < ApplicationRecord
   scope :dron_last_activity, ->(drone_id) { where(drone_id: drone_id).order(id: :desc) }
 
   alias completed? arrived?
+
+  def self.create_activity(item_id, drone_id, progress = 0)
+    create(item_id: item_id, drone_id: drone_id, progress: progress)
+  end
 end

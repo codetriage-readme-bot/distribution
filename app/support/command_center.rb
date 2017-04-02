@@ -10,11 +10,12 @@ class CommandCenter
   end
 
   def next_instruction
-    @last_activity = if dron_processing?
-                       Instructor.new(id, drone_last_activity).next_process
-                     else
-                       Instructor.new(id).next_process
-                     end
+    return nil unless next_instruction?
+    @last_activity = instructor_intiate.next_process
+  end
+
+  def next_instruction?
+    instructor_intiate.next_process?
   end
 
   def dron_processing?
@@ -26,7 +27,19 @@ class CommandCenter
     @address ||= Address.find(1)
   end
 
+  def last_completed_activity
+    last_activity || drone_last_activity
+  end
+
   private
+
+  def instructor_intiate
+    Instructor.new(id, any_activity)
+  end
+
+  def any_activity
+    dron_processing? ? drone_last_activity : nil
+  end
 
   def drone_last_activity
     @last_activity ||= Activity.dron_last_activity(id).first

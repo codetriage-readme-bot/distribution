@@ -20,4 +20,5 @@ class Item < ApplicationRecord
 
   scope :unfinished, -> { where(status: 'initiate') }
   scope :high_priority, -> { order('priority desc') }
+  scope :undelivered, -> { high_priority.unfinished }
 end
