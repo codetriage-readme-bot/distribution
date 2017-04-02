@@ -16,11 +16,10 @@ module DroneHelper
   end
 
   def display_address(status, item)
-    available = [:picked, :reached, :arrived].any? { |es| es == status.to_sym }
-    if available
-      mapper = { picked: :item, reached: :delivery, arrived: :command_center }[status.to_sym]
-      send("#{mapper}_address".to_sym, item)
-    end
+    available = %i(picked reached arrived).any? { |es| es == status.to_sym }
+    return unless available
+    mapper = { picked: :item, reached: :delivery, arrived: :command_center }[status.to_sym]
+    send("#{mapper}_address".to_sym, item)
   end
 
   def box_list(active, status, &block)

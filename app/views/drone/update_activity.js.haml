@@ -3,6 +3,6 @@
 - elsif @activity.completed?
   CommonFunction.updateProgressBar("#{@drone.progress_length}", "#{drone_url(@drone)}")
 - else 
-  $('.nav.nav-pills.nav-stacked').html("#{j render partial: 'drone/activity_list', locals: { drone: @drone }}")
+  $('.nav.nav-pills.nav-stacked').html("#{j render partial: 'drone/activity_list', locals: { drone: @drone, item: @activity.item }}")
   CommonFunction.activateToolTip()
   CommonFunction.updateProgressBar("#{@drone.progress_length}")

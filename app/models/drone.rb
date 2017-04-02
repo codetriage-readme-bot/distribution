@@ -14,11 +14,10 @@ class Drone < ApplicationRecord
   def delivered
     Activity.where(drone_id: id, progress: 'arrived').count
   end
-  
+
   private
 
   def name_downcase
     self.name = name.downcase if name_changed?
   end
-
 end
