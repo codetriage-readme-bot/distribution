@@ -3,7 +3,7 @@
     %h2
       Name : 
       = @item.name
-.progress
-  .progress-bar.progress-bar-info{:style => "width: 80%"}
+.progress.progress-striped.active
+  .progress-bar.progress-bar-info{:style => "width: #{@drone.progress_length}%"}
 %ul.nav.nav-pills.nav-stacked.col-md-6.col-md-offset-3
   = render partial: 'drone/activity_list', locals: { drone: @drone }

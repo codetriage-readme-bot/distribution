@@ -74,6 +74,9 @@
       font-size: 14px;
       padding: 5px 13px;
     }
+    .tooltip.fade {
+      right: 0;
+    }
   }
   li.active{
     width: 101%;
@@ -81,6 +84,8 @@
     right: .5%;
     a i {
       margin-left: 0.5%;
+    }
+    a:hover i {
       background-image: url(/assets/checkmark_marker.png);
     }
   }

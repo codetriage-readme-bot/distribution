@@ -1,6 +1,8 @@
 - if @error.present?
   alert("#{@error}")
 - elsif @activity.completed?
-  window.location.href = "#{drone_url(@drone)}"
+  CommonFunction.updateProgressBar("#{@drone.progress_length}", "#{drone_url(@drone)}")
 - else 
   $('.nav.nav-pills.nav-stacked').html("#{j render partial: 'drone/activity_list', locals: { drone: @drone }}")
+  CommonFunction.activateToolTip()
+  CommonFunction.updateProgressBar("#{@drone.progress_length}")

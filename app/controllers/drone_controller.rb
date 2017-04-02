@@ -12,6 +12,7 @@ class DroneController < ApplicationController
       flash[:success] = 'Welcome drone! Register your name.'
       redirect_to drones_path
     end
+    @activity = command_center.last_completed_activity
   end
 
   def item_activity
