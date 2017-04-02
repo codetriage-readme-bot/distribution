@@ -1,4 +1,6 @@
 - if @error.present?
   alert("#{@error}")
+- elsif @activity.completed?
+  window.location.href = "#{drone_url(@drone)}"
 - else 
-  $('.nav.nav-pills.nav-stacked').html("#{j render partial: 'drone/activity_list', locals: { drone: @drone }})
+  $('.nav.nav-pills.nav-stacked').html("#{j render partial: 'drone/activity_list', locals: { drone: @drone }}")
