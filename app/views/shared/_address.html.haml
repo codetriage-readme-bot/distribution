@@ -1,0 +1,13 @@
+%button.btn.btn-default{"data-placement" => "right", "data-toggle" => "tooltip", :title => "", :type => "button"} Address
+.tooltip.fade.bottom.in
+  .tooltip-arrow
+  .tooltip-inner
+    %address
+      %strong= address.city
+      %br/
+      = address.street_name
+      %br/
+      = "#{address.state}, #{address.country}"
+      %br/
+      %abbr{:title => "Zip"} Z:
+      = address.zip

@@ -15,8 +15,9 @@ class Item < ApplicationRecord
   enum status: %i(initiate processing completed)
 
   belongs_to :address
+  belongs_to :delivery_address, class_name: 'Address'
 
-  validates_presence_of :name, :weight, :address
+  validates_presence_of :name, :weight, :address, :delivery_address
 
   scope :unfinished, -> { where(status: 'initiate') }
   scope :high_priority, -> { order('priority desc') }
