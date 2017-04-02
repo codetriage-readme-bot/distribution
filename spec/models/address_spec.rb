@@ -31,4 +31,11 @@ RSpec.describe Address, type: :model do
     it { expect(address.country).to         eq('United States') }
     it { expect(Address.count).to           be(1) }
   end
+
+  describe '.command_center' do
+    it 'find command_center address' do
+      address = FactoryGirl.create(:address, id: 1)
+      expect(Address.command_center).to eq(address)
+    end
+  end
 end
