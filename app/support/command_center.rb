@@ -42,6 +42,7 @@ class CommandCenter
   end
 
   def drone_last_activity
+    # puts Activity.count
     @last_activity ||= Activity.dron_last_activity(id).first
   end
 

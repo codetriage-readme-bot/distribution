@@ -79,6 +79,7 @@ end
 group :test do
   gem 'capybara'
   gem 'capybara-webkit'
+  gem 'rails-controller-testing'
   gem 'database_cleaner'
   gem 'launchy'
   gem 'rspec-rails'
