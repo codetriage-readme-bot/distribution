@@ -21,6 +21,12 @@ class DroneController < ApplicationController
     @activity = command_center.next_instruction if @activity.present? && @activity.completed?
   end
 
+  def item_activity
+    redirect_to drone_path(@drone) and return unless command_center.next_instruction?
+    @activity = command_center.last_completed_activity
+    @activity = command_center.next_instruction if @activity.present? && @activity.completed?
+  end
+
   def update_activity
     if params[:message].present? && command_center.next_activity_name == params[:message]
       @activity = command_center.next_instruction

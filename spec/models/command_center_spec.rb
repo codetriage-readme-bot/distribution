@@ -86,7 +86,7 @@ RSpec.describe CommandCenter do
       expect(command_center.next_instruction.item.id).to eq(item.id)
     end
   end
-
+  
   describe '#last_completed_activity' do
     let(:drone) { FactoryGirl.create(:drone) }
     let(:processing_item) { FactoryGirl.create(:item, status: 'processing') }
