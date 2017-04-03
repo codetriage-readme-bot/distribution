@@ -47,6 +47,9 @@ gem 'font-awesome-rails'
 # Decorators/View-Models
 gem 'draper', '3.0.0.pre1'
 
+# Active admin to managing the data
+gem 'activeadmin', github: 'activeadmin', branch: 'master'
+
 # Development
 group :development do
   gem 'pry-rails' # Best Console handler
