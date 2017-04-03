@@ -1,0 +1,4 @@
+*.scss linguist-language=Ruby
+*.coffee linguist-language=Ruby
+*.haml linguist-language=Ruby
+app/assets/* linguist-vendored
